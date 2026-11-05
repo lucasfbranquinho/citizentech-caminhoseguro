@@ -62,6 +62,9 @@ def trecho(arquivo, primeira, ultima, titulo, deve_comecar_com):
     if not recorte or not recorte[0].strip().startswith(deve_comecar_com):
         sys.exit(f"{arquivo}: a linha {primeira} não começa com '{deve_comecar_com}'. "
                  "Atualize os números do trecho em gerar_pdf.py.")
+    # Tira os comandos de execução (geração da chave, tamanho e exit), que não ficam no running-config.
+    fora = {"crypto key generate rsa", "1024", "exit", "end", "write memory"}
+    recorte = [l for l in recorte if l.strip() not in fora]
     return f"<h4>{esc(titulo)}</h4><pre>{esc(chr(10).join(recorte))}</pre>"
 
 
@@ -119,7 +122,8 @@ corpo = f"""
 <section>
   <h2>1. Ficha da CitizenTech</h2>
   <table>
-    <tr><th style="width:30%">Cidade e bairro</th><td>{campo(ficha['cidade_bairro'], 'Cidade e bairro')}</td></tr>
+    <tr><th style="width:30%">Nome da CitizenTech</th><td>{campo(ficha['nome_citizentech'], 'Nome da CitizenTech')}</td></tr>
+    <tr><th>Cidade e bairro</th><td>{campo(ficha['cidade_bairro'], 'Cidade e bairro')}</td></tr>
     <tr><th>Cidadão beneficiado</th><td>{campo(ficha['cidadao_beneficiado'], 'Cidadão beneficiado')}</td></tr>
     <tr><th>Problema, em uma frase</th><td>{campo(ficha['problema'], 'Problema')}</td></tr>
     <tr><th>Como funciona</th><td>{campo(ficha['como_funciona'], 'Como funciona')}</td></tr>
@@ -190,8 +194,9 @@ corpo = f"""
 
 <section>
   <h2>4. Configuração (trechos)</h2>
-  <p>Trechos da configuração aplicada nos equipamentos (o <code>show running-config</code> do R1 foi conferido
-     no Packet Tracer e confere com estes trechos).</p>
+  <p>Trechos da configuração de cada equipamento, agrupados por assunto. O <code>show running-config</code> do R1 foi
+     conferido no Packet Tracer e traz estes mesmos comandos; nele as senhas aparecem cifradas por causa do
+     <code>service password-encryption</code> e do <code>secret</code>.</p>
   {trecho('SW1.txt', 3, 27, 'SW1 – VLANs, portas de acesso e trunk 802.1Q', 'hostname')}
   {trecho('R1.txt', 19, 37, 'R1 – router-on-a-stick (subinterfaces dot1Q)', 'interface g0/0')}
   {trecho('R1.txt', 38, 43, 'R1 – interface para o provedor (NAT outside)', 'interface g0/1')}

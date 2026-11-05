@@ -1,6 +1,6 @@
 ﻿# Progresso da GS — prazo 19/11/2026 23h55
 
-Atualizado em: 05/11/2026
+Atualizado em: 05/11/2026 (Data Science concluída)
 
 ## Enunciados (04/11/2026)
 - `enunciados/GS-CitizenTech-2ES-2026.pdf`: o enunciado COMPLETO, com as 7 disciplinas (já resumido nos REQUISITOS.md).
@@ -20,7 +20,7 @@ Atualizado em: 05/11/2026
 |---|---|---|---|
 | 01 Agile | Vitor | não iniciado | depende da ideia |
 | 02 AR-VR | Vitor | não iniciado | aguardando detalhes do professor |
-| 03 Data Science | Lucas | não iniciado | achar base CSV pública ligada ao problema |
+| 03 Data Science | Lucas | feito no tema CaminhoSeguro/Bela Vista (base SIMULADA de 600 segmentos, seed 2026): notebook executado sem erro, `entrega-data-science.zip` conferido (notebook, CSV, `integrantes.txt`, `FONTE_DOS_DADOS.txt`, `gerar_base.py`; reexecutado do zero a partir do ZIP, sem erro) | só enviar o ZIP no Teams (um integrante) até 19/11 23h55. Estudar para a defesa: split ANTES do Pipeline (vazamento), imputação mediana/mais frequente, one-hot, MAE/RMSE/R² (teste: 1,76 / 2,66 / 0,67), matriz de confusão, precisão 0,75 / recall 0,44 / F1 0,56 com limiar 0,5, por que baixar o limiar, razão de chances, "E se?" (60 segmentos: 77,5% → 81,4%) e as limitações (dados simulados, causalidade, viés de registro) |
 | 04 Database | Vitor | não iniciado | depende da ideia |
 | 05 DDD Java | Vitor | não iniciado | depende do modelo de dados (04) |
 | 06 Dynamic Programming | Lucas | feito no tema CaminhoSeguro/Bela Vista (dados simulados): 21 testes OK, `main.py` OK, `entrega-dp.zip` atualizado | só enviar o ZIP no Teams (um integrante) até 19/11 23h55; se a equipe trocar de tema/bairro, editar `dados/bairro.json`, regerar o ZIP e rodar `python -m unittest`. Estudar para a defesa: Dijkstra, Floyd-Warshall (tabulação), memoização em `menor_custo_com_limite`, mochila 0/1 (as duas versões), rota com parada, indicadores e por que a memoização reduz as chamadas |
@@ -38,10 +38,13 @@ Deploy no Render (05) vale 30 pts: não deixar para o último dia.
   `index.html`, HTTP do Server-Solucao (`.pkt`), `teste3.png`, PDF, README da raiz e README do Dynamic Programming.
   Os outros integrantes/disciplinas devem usar o mesmo tema e bairro.
 - **Falta:**
-  1. Repositório criado em 05/11/2026: https://github.com/lucasfbranquinho/citizentech-caminhoseguro (**privado**, por
-     decisão do Lucas; o link já está na Ficha, no `.pkt` e no PDF).
+  1. Repositório criado em 05/11/2026: https://github.com/lucasfbranquinho/citizentech-caminhoseguro (**público**, por
+     decisão do Lucas em 05/11/2026; o link já está na Ficha, no `.pkt` e no PDF).
      Se mudar a Ficha: editar `dados.json` e `index.html`, colar o HTML em Server-Solucao → Services → HTTP → index.html
      (Save → Yes), refazer o print do teste 3, salvar o `.pkt` e rodar `python gerar_pdf.py` na pasta `gerador-pdf`.
   2. Decisão do Lucas: usar a personagem fictícia dona Maria (72 anos), já incluída na Ficha, no `.pkt` e no PDF.
   3. Um integrante envia `.pkt` + PDF no Teams/Portal até 19/11/2026 23h55.
 
+
+## Revisão final das matérias do Lucas (05/11/2026)
+Network, DP e Data Science revisados contra o enunciado e corrigidos (ver prompts.md). Arquivos de envio: `Downloads\ENVIAR-Network\` (.pkt + PDF), `06-dynamic-programming/entrega-dp.zip`, `03-data-science/entrega-data-science.zip`. Backups das versões anteriores em `_backup/`. Pendente: confirmar que o nº da equipe é 1 (X = 1 na rede) e fazer commit/push no GitHub.

@@ -1,0 +1,20 @@
+FONTE DOS DADOS - CaminhoSeguro (Bela Vista, Sao Paulo/SP)
+Arquivo: trechos_bela_vista.csv
+
+1) Os dados sao SIMULADOS. Foram gerados pelo script gerar_base.py (seed fixa 2026),
+   com 600 linhas: 20 trechos x 30 segmentos de calcada. Rodar o script de novo gera
+   exatamente o mesmo arquivo.
+2) NAO sao medicoes reais da Bela Vista e NAO contem nenhum dado pessoal.
+3) Os parametros foram inspirados em referencias publicas:
+   - NBR 9050 (ABNT, acessibilidade): faixa livre minima de 1,20 m na calcada e
+     inclinacao longitudinal de ate 8,33% (rampa 1:12).
+   - Os 20 trechos entre locais e o nivel de risco de cada um vem do bairro.json da
+     materia de Dynamic Programming (tambem simulado).
+4) Ruido e valores faltantes (3% a 6% em varias colunas) foram inseridos de proposito
+   para treinar a preparacao dos dados.
+5) As conclusoes do notebook servem para demonstrar o metodo, nao para decidir obras reais.
+
+Colunas: id_segmento, local_inicio, local_fim, declividade_pct, largura_calcada_m,
+estado_piso, rampa_esquina, iluminacao_nota, fluxo_veiculos_h, fluxo_pedestres_h,
+dist_ubs_m, semaforo_pedestres, obstaculos_calcada, ocorrencias_mes (alvo da regressao
+linear), inacessivel_cadeira (alvo da regressao logistica).

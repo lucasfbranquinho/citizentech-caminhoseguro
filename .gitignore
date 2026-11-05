@@ -3,3 +3,4 @@ __pycache__/
 *.dmp
 *.zip
 enunciados/
+_backup/
