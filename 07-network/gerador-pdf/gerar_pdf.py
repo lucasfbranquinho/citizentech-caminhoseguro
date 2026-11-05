@@ -152,7 +152,7 @@ corpo = f"""
 
 <section>
   <h2>2.1 Organização física (aba Physical)</h2>
-  <p>O local físico foi modelado em dois prédios: o <b>Centro Comunitario CitizenTech</b>
+  <p>O local físico foi modelado em dois prédios: o <b>Centro Comunitário CitizenTech</b> (a base comunitária da Bela Vista, local físico da solução)
      (sala de rede com R1 e SW1, sala da equipe, sala de servidores e espaço do cidadão com o AP e o laptop) e o
      <b>Provedor ISP</b> (ISP e servidor da internet), ligados por um cabo na cidade.</p>
   <div class="duas">

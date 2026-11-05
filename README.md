@@ -13,6 +13,16 @@
 | Indicador de impacto | Percentual de trechos do bairro acessíveis e número de rotas acessíveis consultadas por semana |
 | ODS conectados | 11 (cidades e comunidades sustentáveis), 10 (redução das desigualdades), 3 (saúde e bem-estar) |
 
+## As seis perguntas do briefing
+| Pergunta | Resposta |
+|---|---|
+| 1. Quem é o cidadão beneficiado? | Pessoas com mobilidade reduzida e idosos da Bela Vista (personagem: dona Maria, 72 anos, fictícia) |
+| 2. Qual problema será resolvido? | Calçadas irregulares, ladeiras e travessias de risco fazem esses moradores desistirem de sair de casa |
+| 3. Como a solução funcionará? | O morador pede uma rota e recebe o caminho mais rápido, o mais seguro ou o mais acessível; a comunidade registra os trechos problemáticos |
+| 4. Quais tecnologias serão empregadas? | Python (grafos, Dijkstra, Floyd-Warshall, programação dinâmica), banco de dados relacional, API em Java (DDD) no Render, análise de dados em notebook, simulação AR-VR e rede segmentada no Packet Tracer (VLANs, NAT, ACL, SSH, Wi-Fi WPA2) |
+| 5. Quem participará do ecossistema? | Moradores e idosos (usuários), a comunidade que registra ocorrências, a UBS e o Centro Comunitário (pontos de apoio e Wi-Fi público), a subprefeitura (responsável por calçadas e rampas) e a equipe de desenvolvimento |
+| 6. Como o impacto será medido e ampliado? | % de trechos acessíveis e rotas acessíveis consultadas por semana; ampliar para outros bairros trocando só os dados dos locais e trechos |
+
 ## Integrantes
 | Nome | RM |
 |---|---|
