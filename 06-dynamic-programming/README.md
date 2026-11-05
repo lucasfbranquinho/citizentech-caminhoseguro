@@ -16,7 +16,7 @@
 | Cidadão beneficiado | Pessoas com mobilidade reduzida e idosos que moram ou circulam na Bela Vista. Persona de exemplo: dona Maria, 72 anos (**fictícia** nesta entrega) |
 | Problema | Calçadas irregulares, escadarias e travessias de risco fazem moradores com mobilidade reduzida desistirem de sair de casa ou correrem risco no caminho |
 | Papel desta disciplina | Calcular a rota mais rápida, mais segura ou mais acessível e decidir quais melhorias fazer com um orçamento limitado |
-| Repositório | _[colar o link do GitHub da equipe aqui quando for criado]_ |
+| Repositório | https://github.com/lucasfbranquinho/citizentech-caminhoseguro (pasta `06-dynamic-programming`) |
 | Indicador de impacto | % de trechos acessíveis, % de pares de locais com rota acessível e custo médio da rota acessível (calculados pelo `indicadores.py`) |
 | ODS | **11** (cidades e comunidades sustentáveis): ruas acessíveis e seguras; **10** (redução das desigualdades): quem tem mobilidade reduzida passa a ter o mesmo acesso a saúde, escola e transporte; **3** (saúde e bem-estar): rota segura até o posto de saúde e menos risco de queda |
 
