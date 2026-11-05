@@ -24,7 +24,7 @@ Atualizado em: 05/11/2026
 | 04 Database | Vitor | não iniciado | depende da ideia |
 | 05 DDD Java | Vitor | não iniciado | depende do modelo de dados (04) |
 | 06 Dynamic Programming | Lucas | feito no tema CaminhoSeguro/Bela Vista (dados simulados): 21 testes OK, `main.py` OK, `entrega-dp.zip` atualizado | só enviar o ZIP no Teams (um integrante) até 19/11 23h55; se a equipe trocar de tema/bairro, editar `dados/bairro.json`, regerar o ZIP e rodar `python -m unittest`. Estudar para a defesa: Dijkstra, Floyd-Warshall (tabulação), memoização em `menor_custo_com_limite`, mochila 0/1 (as duas versões), rota com parada, indicadores e por que a memoização reduz as chamadas |
-| 07 Network | Lucas | feito com X=1 (confirmado): .pkt + PDF + 7 testes OK + segurança reforçada + Ficha preenchida (CaminhoSeguro, Bela Vista/SP) | só o link do GitHub na Ficha e o envio (ver "Network — detalhes") |
+| 07 Network | Lucas | feito com X=1 (confirmado): .pkt + PDF + 7 testes OK + segurança reforçada + Ficha preenchida (CaminhoSeguro, Bela Vista/SP) | só o envio no Teams/Portal (link do GitHub já está na Ficha; ver "Network — detalhes") |
 
 ## Ordem sugerida (dependências)
 Ideia/Ficha → 04 Database (modelo) → 05 DDD Java (usa as mesmas tabelas) → resto em paralelo.
@@ -38,7 +38,8 @@ Deploy no Render (05) vale 30 pts: não deixar para o último dia.
   `index.html`, HTTP do Server-Solucao (`.pkt`), `teste3.png`, PDF, README da raiz e README do Dynamic Programming.
   Os outros integrantes/disciplinas devem usar o mesmo tema e bairro.
 - **Falta:**
-  1. Criar o repositório no GitHub e colar o link na Ficha (README da raiz e `dados.json`; no PDF fica em amarelo até lá).
+  1. Repositório criado em 05/11/2026: https://github.com/lucasfbranquinho/citizentech-caminhoseguro (**privado**; abrir
+     para o público ou dar acesso ao professor antes do prazo; o link já está na Ficha, no `.pkt` e no PDF).
      Se mudar a Ficha: editar `dados.json` e `index.html`, colar o HTML em Server-Solucao → Services → HTTP → index.html
      (Save → Yes), refazer o print do teste 3, salvar o `.pkt` e rodar `python gerar_pdf.py` na pasta `gerador-pdf`.
   2. A exigência de "pessoa real" do enunciado: conversar com alguém do bairro e trocar a persona fictícia.

@@ -1,5 +1,5 @@
 {
-  "aviso": "DADOS SIMULADOS do tema CaminhoSeguro, bairro Bela Vista (Sao Paulo/SP). Os nomes dos pontos sao referencias genericas ou conhecidas do bairro; os tempos, riscos, custos e beneficios sao INVENTADOS para a simulacao (nao sao medicoes reais). Nenhum dado pessoal real. Dona Maria e uma persona ficticia.",
+  "aviso": "DADOS SIMULADOS do tema CaminhoSeguro, bairro Bela Vista (São Paulo/SP). Os nomes dos pontos são referências genéricas ou conhecidas do bairro; os tempos, riscos, custos e benefícios são INVENTADOS para a simulação (não são medições reais). Nenhum dado pessoal real. Dona Maria é uma persona fictícia.",
   "locais": [
     "Casa_Dona_Maria", "Praca_14_Bis", "Posto_de_Saude", "Escola", "Metro_Brigadeiro",
     "Mercado", "Ponto_de_Apoio", "Biblioteca", "Viaduto", "Centro_Comunitario",
@@ -28,19 +28,20 @@
     {"a": "Farmacia",        "b": "Mercado",           "tempo": 4, "risco": 2, "acessivel": true}
   ],
   "orcamento_mil_reais": 50,
+  "nota_beneficio": "beneficio = estimativa SIMULADA de pessoas atendidas por dia pela melhoria; custo em mil reais.",
   "melhorias": [
     {"nome": "Rampa na escadaria Casa-Escola", "custo": 18, "beneficio": 40,
      "efeito": {"tipo": "tornar_acessivel", "a": "Casa_Dona_Maria", "b": "Escola"}},
-    {"nome": "Iluminacao do Viaduto", "custo": 12, "beneficio": 30,
+    {"nome": "Iluminação do Viaduto", "custo": 12, "beneficio": 30,
      "efeito": {"tipo": "reduzir_risco", "a": "Casa_Dona_Maria", "b": "Viaduto", "novo_risco": 2}},
-    {"nome": "Rampa Escola-Metro", "custo": 20, "beneficio": 35,
+    {"nome": "Rampa Escola-Metrô", "custo": 20, "beneficio": 35,
      "efeito": {"tipo": "tornar_acessivel", "a": "Escola", "b": "Metro_Brigadeiro"}},
-    {"nome": "Banco e sombra na Praca 14 Bis", "custo": 8, "beneficio": 22, "efeito": null},
-    {"nome": "Camera e iluminacao Viaduto-Metro", "custo": 14, "beneficio": 28,
+    {"nome": "Banco e sombra na Praça 14 Bis", "custo": 8, "beneficio": 22, "efeito": null},
+    {"nome": "Câmera e iluminação Viaduto-Metrô", "custo": 14, "beneficio": 28,
      "efeito": {"tipo": "reduzir_risco", "a": "Viaduto", "b": "Metro_Brigadeiro", "novo_risco": 2}},
     {"nome": "Bebedouro no Ponto de Apoio", "custo": 6, "beneficio": 15, "efeito": null},
-    {"nome": "Piso tatil na Biblioteca", "custo": 10, "beneficio": 18, "efeito": null},
-    {"nome": "Rampa Posto de Saude-Centro Comunitario", "custo": 16, "beneficio": 26,
+    {"nome": "Piso tátil na Biblioteca", "custo": 10, "beneficio": 18, "efeito": null},
+    {"nome": "Rampa Posto de Saúde-Centro Comunitário", "custo": 16, "beneficio": 26,
      "efeito": {"tipo": "tornar_acessivel", "a": "Posto_de_Saude", "b": "Centro_Comunitario"}}
   ]
 }

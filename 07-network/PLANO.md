@@ -3,7 +3,7 @@
 > **Estado (05/11/2026):** rede montada e testada no Packet Tracer com **X = 1 (confirmado pela equipe)**
 > (`citizentech-rede.pkt`, prints em `prints/`, PDF em `GS-Network-CitizenTech.pdf`).
 > Segurança reforçada: SSH só da VLAN Equipe (access-class), SW1 com senhas/SSH/IP de gerência .131 e portas sem uso desligadas.
-> Ficha "CaminhoSeguro" (Bela Vista/SP) publicada no .pkt e no PDF (05/11/2026); pendente só o link do GitHub.
+> Ficha "CaminhoSeguro" (Bela Vista/SP) publicada no .pkt e no PDF (05/11/2026); link do GitHub já incluído (repositório privado).
 > `configs/*.txt` usam `X` literal (originais); `configs/x1/` são as cópias já com X = 1.
 
 ## Mapa da pasta

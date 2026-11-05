@@ -16,6 +16,7 @@
 | Cidadão beneficiado | Pessoas com mobilidade reduzida e idosos que moram ou circulam na Bela Vista. Persona de exemplo: dona Maria, 72 anos (**fictícia** nesta entrega) |
 | Problema | Calçadas irregulares, escadarias e travessias de risco fazem moradores com mobilidade reduzida desistirem de sair de casa ou correrem risco no caminho |
 | Papel desta disciplina | Calcular a rota mais rápida, mais segura ou mais acessível e decidir quais melhorias fazer com um orçamento limitado |
+| Repositório | _[colar o link do GitHub da equipe aqui quando for criado]_ |
 | Indicador de impacto | % de trechos acessíveis, % de pares de locais com rota acessível e custo médio da rota acessível (calculados pelo `indicadores.py`) |
 | ODS | **11** (cidades e comunidades sustentáveis): ruas acessíveis e seguras; **10** (redução das desigualdades): quem tem mobilidade reduzida passa a ter o mesmo acesso a saúde, escola e transporte; **3** (saúde e bem-estar): rota segura até o posto de saúde e menos risco de queda |
 
@@ -59,6 +60,7 @@ Perfis de rota: `rapida`, `segura` e `acessivel`. Os nomes dos locais estão em 
 | `indicadores.py` | Indicadores de impacto antes e depois das melhorias |
 | `eficiencia.py` | Medição de chamadas e tempo, com dados sintéticos maiores |
 | `main.py` | Linha de comando, menu e casos de exemplo |
+| `prompts.md` | Registro dos prompts de IA usados nesta disciplina |
 | `tests/test_algoritmos.py` | 21 testes com respostas conhecidas |
 
 ## O grafo e os perfis de custo
@@ -75,6 +77,32 @@ Cada local é um nó e cada trecho de rua é uma aresta nos dois sentidos, com `
 Estrutura escolhida: **lista de adjacência** (dicionário de dicionários). Um bairro tem poucas
 ruas por esquina, então o grafo é esparso e a lista gasta O(V + E) de memória contra O(V²) de uma
 matriz.
+
+### Mapa do bairro (dados simulados)
+
+```mermaid
+graph LR
+  Casa_Dona_Maria ---|"escada (não acessível)"| Escola
+  Casa_Dona_Maria --- Praca_14_Bis
+  Casa_Dona_Maria ---|"risco alto"| Viaduto
+  Praca_14_Bis --- Posto_de_Saude
+  Praca_14_Bis --- Mercado
+  Praca_14_Bis --- Biblioteca
+  Escola --- Mercado
+  Escola ---|"escada (não acessível)"| Metro_Brigadeiro
+  Viaduto ---|"risco alto"| Metro_Brigadeiro
+  Mercado --- Metro_Brigadeiro
+  Mercado --- Ponto_de_Apoio
+  Mercado --- Farmacia
+  Posto_de_Saude --- Ponto_de_Apoio
+  Posto_de_Saude ---|"escada (não acessível)"| Centro_Comunitario
+  Biblioteca --- Centro_Comunitario
+  Ponto_de_Apoio --- Centro_Comunitario
+  Metro_Brigadeiro --- Centro_Comunitario
+  Metro_Brigadeiro --- FIAP_Paulista
+  Biblioteca --- FIAP_Paulista
+  Farmacia --- FIAP_Paulista
+```
 
 ## Algoritmos
 
@@ -157,6 +185,16 @@ resultados e para consultas de uma única origem.
 - Melhorias: a rampa abre a rota acessível (38 → 22), os indicadores melhoram (85% → 90%) e o grafo
   original não é alterado.
 
+## Limitações (o que o código não faz)
+
+- Os pesos (3 × risco), os riscos e os benefícios são **simulados**; num caso real viriam de
+  ocorrências da comunidade e de dados públicos, e os pesos precisariam ser calibrados.
+- O grafo é pequeno e estático: não considera horário (iluminação à noite), chuva ou obras.
+- A mochila trata cada melhoria como independente: o benefício de duas rampas juntas é a soma dos
+  benefícios, sem sobreposição. Os indicadores antes e depois conferem o efeito real no grafo.
+- Floyd-Warshall (O(V³)) não é a melhor escolha para bairros com milhares de locais; nesse caso o
+  Dijkstra por origem, ou mantendo só as rotas mais consultadas, escala melhor.
+
 ## Como adaptar a outro bairro ou tema
 
 Basta editar `dados/bairro.json` (ou passar outro arquivo com `--dados`): trocar os locais pelos
@@ -167,5 +205,5 @@ pedir outro critério, é só trocar a fórmula em `PERFIS`, no `grafo.py`.
 
 ## Uso de IA
 
-Usamos IA (Claude) como copiloto; os prompts estão registrados no `prompts.md` do repositório da
-equipe e cada integrante sabe explicar o código.
+Usamos IA (Claude) como copiloto; os prompts estão registrados no `prompts.md` desta pasta (e no da
+equipe, no repositório) e cada integrante sabe explicar o código.

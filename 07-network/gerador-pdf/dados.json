@@ -14,7 +14,7 @@
     "problema": "Calçadas irregulares, ladeiras e travessias de risco fazem moradores com mobilidade reduzida desistirem de sair de casa ou correrem risco no caminho.",
     "como_funciona": "O morador pede uma rota entre dois pontos do bairro e recebe o caminho mais rápido, o mais seguro ou o mais acessível. Os trechos problemáticos são registrados pela comunidade e entram no cálculo das rotas (dados simulados nesta fase).",
     "demais_partes": "Agile: organiza a equipe e o pitch. AR-VR: simula a rota e as barreiras da calçada. Data Science: analisa as ocorrências por trecho. Database: guarda locais, trechos e ocorrências. DDD Java: API das rotas e ocorrências no Render. Dynamic Programming: calcula as rotas (Dijkstra, Floyd-Warshall) e a escolha de melhorias com orçamento (mochila).",
-    "repositorio": "[LINK GITHUB - criar o repositório]",
+    "repositorio": "https://github.com/lucasfbranquinho/citizentech-caminhoseguro",
     "indicador": "Percentual de trechos do bairro acessíveis e número de rotas acessíveis consultadas por semana.",
     "ods": "ODS 11 (cidades e comunidades sustentáveis): rotas e calçadas seguras; ODS 10 (redução das desigualdades): inclusão de quem tem mobilidade reduzida; ODS 3 (saúde e bem-estar): acesso à UBS."
   }
