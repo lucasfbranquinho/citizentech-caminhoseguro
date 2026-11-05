@@ -1,0 +1,28 @@
+enable
+configure terminal
+hostname ISP
+enable secret Gs2026@en
+service password-encryption
+no ip domain-lookup
+ip domain-name isp.local
+username admin secret Gs2026@ssh
+crypto key generate rsa
+1024
+ip ssh version 2
+line con 0
+ password Gs2026@con
+ login
+line vty 0 4
+ login local
+ transport input ssh
+exit
+interface g0/0
+ description Link para R1 (cliente CitizenTech)
+ ip address 200.0.0.2 255.255.255.252
+ no shutdown
+interface g0/1
+ description Rede internet simulada
+ ip address 8.8.8.1 255.255.255.0
+ no shutdown
+end
+write memory

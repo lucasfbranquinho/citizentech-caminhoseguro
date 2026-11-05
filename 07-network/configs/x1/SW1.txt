@@ -1,0 +1,57 @@
+enable
+configure terminal
+hostname SW1
+no ip domain-lookup
+vlan 10
+ name EQUIPE
+vlan 20
+ name CIDADAO
+vlan 30
+ name SERVIDORES
+exit
+interface range fa0/1 - 2
+ description PCs Equipe
+ switchport mode access
+ switchport access vlan 10
+interface fa0/3
+ description AP Wi-Fi Cidadao
+ switchport mode access
+ switchport access vlan 20
+interface fa0/4
+ description Server-Solucao
+ switchport mode access
+ switchport access vlan 30
+interface g0/1
+ description Trunk para R1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30
+crypto key generate rsa
+1024
+enable secret Gs2026@en
+service password-encryption
+ip domain-name citizentech.local
+username admin secret Gs2026@ssh
+ip ssh version 2
+line con 0
+ password Gs2026@con
+ login
+ exec-timeout 10 0
+line vty 0 15
+ login local
+ transport input ssh
+ exec-timeout 10 0
+exit
+interface vlan 30
+ description Gerencia do SW1
+ ip address 192.168.1.131 255.255.255.192
+ no shutdown
+exit
+ip default-gateway 192.168.1.129
+interface range fa0/5 - 24
+ description Porta sem uso (desligada)
+ shutdown
+interface g0/2
+ description Porta sem uso (desligada)
+ shutdown
+end
+write memory

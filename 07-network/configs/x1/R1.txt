@@ -1,0 +1,83 @@
+enable
+configure terminal
+hostname R1
+enable secret Gs2026@en
+service password-encryption
+no ip domain-lookup
+ip domain-name citizentech.local
+username admin secret Gs2026@ssh
+crypto key generate rsa
+1024
+ip ssh version 2
+line con 0
+ password Gs2026@con
+ login
+line vty 0 4
+ login local
+ transport input ssh
+exit
+interface g0/0
+ description Trunk para SW1 (router-on-a-stick)
+ no shutdown
+interface g0/0.10
+ description VLAN 10 EQUIPE
+ encapsulation dot1Q 10
+ ip address 192.168.1.1 255.255.255.192
+ ip nat inside
+interface g0/0.20
+ description VLAN 20 CIDADAO Wi-Fi publico
+ encapsulation dot1Q 20
+ ip address 192.168.1.65 255.255.255.192
+ ip nat inside
+ ip access-group CIDADAO-IN in
+interface g0/0.30
+ description VLAN 30 SERVIDORES e SENSORES
+ encapsulation dot1Q 30
+ ip address 192.168.1.129 255.255.255.192
+ ip nat inside
+interface g0/1
+ description Link para o provedor (ISP)
+ ip address 200.0.0.1 255.255.255.252
+ ip nat outside
+ no shutdown
+exit
+ip dhcp excluded-address 192.168.1.1 192.168.1.5
+ip dhcp excluded-address 192.168.1.65 192.168.1.69
+ip dhcp excluded-address 192.168.1.129 192.168.1.135
+ip dhcp pool EQUIPE
+ network 192.168.1.0 255.255.255.192
+ default-router 192.168.1.1
+ dns-server 192.168.1.130
+ip dhcp pool CIDADAO
+ network 192.168.1.64 255.255.255.192
+ default-router 192.168.1.65
+ dns-server 192.168.1.130
+ip dhcp pool SERVIDORES
+ network 192.168.1.128 255.255.255.192
+ default-router 192.168.1.129
+ dns-server 192.168.1.130
+exit
+access-list 1 permit 192.168.1.0 0.0.0.255
+ip nat inside source list 1 interface g0/1 overload
+ip route 0.0.0.0 0.0.0.0 200.0.0.2
+ip access-list extended CIDADAO-IN
+ remark Wi-Fi do cidadao: so DNS e HTTP do servidor e internet
+ permit udp any any eq bootps
+ permit udp 192.168.1.64 0.0.0.63 host 192.168.1.130 eq domain
+ permit tcp 192.168.1.64 0.0.0.63 host 192.168.1.130 eq www
+ deny ip 192.168.1.64 0.0.0.63 192.168.1.0 0.0.0.63
+ deny ip 192.168.1.64 0.0.0.63 192.168.1.128 0.0.0.63
+ deny ip 192.168.1.64 0.0.0.63 192.168.1.192 0.0.0.63
+ deny tcp 192.168.1.64 0.0.0.63 any eq 22
+ permit ip 192.168.1.64 0.0.0.63 any
+ip access-list standard SSH-ADMIN
+ remark Administracao por SSH so a partir da VLAN Equipe
+ permit 192.168.1.0 0.0.0.63
+ deny any
+line con 0
+ exec-timeout 10 0
+line vty 0 4
+ access-class SSH-ADMIN in
+ exec-timeout 10 0
+end
+write memory

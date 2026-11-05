@@ -1,0 +1,21 @@
+{
+  "_ajuda": "Edite este arquivo quando a equipe mudar a Ficha, depois rode: python gerar_pdf.py. Campos que comecam com [ aparecem destacados em amarelo no PDF. Tema escolhido: CaminhoSeguro, bairro Bela Vista (SP), alinhado ao Dynamic Programming.",
+  "equipe_numero": 1,
+  "equipe_numero_definido": true,
+  "turma": "2ESPH",
+  "integrantes": [
+    {"nome": "Lucas Branquinho", "rm": "562262"},
+    {"nome": "Vitor Bordalo", "rm": "561592"}
+  ],
+  "ficha": {
+    "nome_citizentech": "CaminhoSeguro",
+    "cidade_bairro": "São Paulo/SP, bairro Bela Vista (perto do campus FIAP Paulista)",
+    "cidadao_beneficiado": "Pessoas com mobilidade reduzida e idosos que moram ou circulam na Bela Vista e precisam chegar à UBS, ao mercado e ao ponto de ônibus. Persona de exemplo: dona Maria, 72 anos (fictícia nesta entrega).",
+    "problema": "Calçadas irregulares, ladeiras e travessias de risco fazem moradores com mobilidade reduzida desistirem de sair de casa ou correrem risco no caminho.",
+    "como_funciona": "O morador pede uma rota entre dois pontos do bairro e recebe o caminho mais rápido, o mais seguro ou o mais acessível. Os trechos problemáticos são registrados pela comunidade e entram no cálculo das rotas (dados simulados nesta fase).",
+    "demais_partes": "Agile: organiza a equipe e o pitch. AR-VR: simula a rota e as barreiras da calçada. Data Science: analisa as ocorrências por trecho. Database: guarda locais, trechos e ocorrências. DDD Java: API das rotas e ocorrências no Render. Dynamic Programming: calcula as rotas (Dijkstra, Floyd-Warshall) e a escolha de melhorias com orçamento (mochila).",
+    "repositorio": "[LINK GITHUB - criar o repositório]",
+    "indicador": "Percentual de trechos do bairro acessíveis e número de rotas acessíveis consultadas por semana.",
+    "ods": "ODS 11 (cidades e comunidades sustentáveis): rotas e calçadas seguras; ODS 10 (redução das desigualdades): inclusão de quem tem mobilidade reduzida; ODS 3 (saúde e bem-estar): acesso à UBS."
+  }
+}

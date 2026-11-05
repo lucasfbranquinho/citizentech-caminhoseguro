@@ -1,0 +1,46 @@
+{
+  "aviso": "DADOS SIMULADOS do tema CaminhoSeguro, bairro Bela Vista (Sao Paulo/SP). Os nomes dos pontos sao referencias genericas ou conhecidas do bairro; os tempos, riscos, custos e beneficios sao INVENTADOS para a simulacao (nao sao medicoes reais). Nenhum dado pessoal real. Dona Maria e uma persona ficticia.",
+  "locais": [
+    "Casa_Dona_Maria", "Praca_14_Bis", "Posto_de_Saude", "Escola", "Metro_Brigadeiro",
+    "Mercado", "Ponto_de_Apoio", "Biblioteca", "Viaduto", "Centro_Comunitario",
+    "FIAP_Paulista", "Farmacia"
+  ],
+  "trechos": [
+    {"a": "Casa_Dona_Maria", "b": "Praca_14_Bis",      "tempo": 5, "risco": 2, "acessivel": true},
+    {"a": "Casa_Dona_Maria", "b": "Escola",            "tempo": 4, "risco": 6, "acessivel": false},
+    {"a": "Casa_Dona_Maria", "b": "Viaduto",           "tempo": 6, "risco": 8, "acessivel": true},
+    {"a": "Praca_14_Bis",    "b": "Posto_de_Saude",    "tempo": 6, "risco": 1, "acessivel": true},
+    {"a": "Praca_14_Bis",    "b": "Mercado",           "tempo": 4, "risco": 2, "acessivel": true},
+    {"a": "Praca_14_Bis",    "b": "Biblioteca",        "tempo": 5, "risco": 3, "acessivel": true},
+    {"a": "Escola",          "b": "Mercado",           "tempo": 5, "risco": 4, "acessivel": true},
+    {"a": "Escola",          "b": "Metro_Brigadeiro",  "tempo": 7, "risco": 5, "acessivel": false},
+    {"a": "Viaduto",         "b": "Metro_Brigadeiro",  "tempo": 4, "risco": 7, "acessivel": true},
+    {"a": "Mercado",         "b": "Metro_Brigadeiro",  "tempo": 6, "risco": 3, "acessivel": true},
+    {"a": "Mercado",         "b": "Ponto_de_Apoio",    "tempo": 3, "risco": 1, "acessivel": true},
+    {"a": "Posto_de_Saude",  "b": "Ponto_de_Apoio",    "tempo": 4, "risco": 1, "acessivel": true},
+    {"a": "Biblioteca",      "b": "Centro_Comunitario","tempo": 4, "risco": 2, "acessivel": true},
+    {"a": "Ponto_de_Apoio",  "b": "Centro_Comunitario","tempo": 5, "risco": 2, "acessivel": true},
+    {"a": "Posto_de_Saude",  "b": "Centro_Comunitario","tempo": 9, "risco": 6, "acessivel": false},
+    {"a": "Metro_Brigadeiro","b": "Centro_Comunitario","tempo": 8, "risco": 2, "acessivel": true},
+    {"a": "FIAP_Paulista",   "b": "Metro_Brigadeiro",  "tempo": 5, "risco": 2, "acessivel": true},
+    {"a": "FIAP_Paulista",   "b": "Biblioteca",        "tempo": 6, "risco": 3, "acessivel": true},
+    {"a": "FIAP_Paulista",   "b": "Farmacia",          "tempo": 3, "risco": 1, "acessivel": true},
+    {"a": "Farmacia",        "b": "Mercado",           "tempo": 4, "risco": 2, "acessivel": true}
+  ],
+  "orcamento_mil_reais": 50,
+  "melhorias": [
+    {"nome": "Rampa na escadaria Casa-Escola", "custo": 18, "beneficio": 40,
+     "efeito": {"tipo": "tornar_acessivel", "a": "Casa_Dona_Maria", "b": "Escola"}},
+    {"nome": "Iluminacao do Viaduto", "custo": 12, "beneficio": 30,
+     "efeito": {"tipo": "reduzir_risco", "a": "Casa_Dona_Maria", "b": "Viaduto", "novo_risco": 2}},
+    {"nome": "Rampa Escola-Metro", "custo": 20, "beneficio": 35,
+     "efeito": {"tipo": "tornar_acessivel", "a": "Escola", "b": "Metro_Brigadeiro"}},
+    {"nome": "Banco e sombra na Praca 14 Bis", "custo": 8, "beneficio": 22, "efeito": null},
+    {"nome": "Camera e iluminacao Viaduto-Metro", "custo": 14, "beneficio": 28,
+     "efeito": {"tipo": "reduzir_risco", "a": "Viaduto", "b": "Metro_Brigadeiro", "novo_risco": 2}},
+    {"nome": "Bebedouro no Ponto de Apoio", "custo": 6, "beneficio": 15, "efeito": null},
+    {"nome": "Piso tatil na Biblioteca", "custo": 10, "beneficio": 18, "efeito": null},
+    {"nome": "Rampa Posto de Saude-Centro Comunitario", "custo": 16, "beneficio": 26,
+     "efeito": {"tipo": "tornar_acessivel", "a": "Posto_de_Saude", "b": "Centro_Comunitario"}}
+  ]
+}
