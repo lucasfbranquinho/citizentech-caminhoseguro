@@ -10,7 +10,7 @@
   "ficha": {
     "nome_citizentech": "CaminhoSeguro",
     "cidade_bairro": "São Paulo/SP, bairro Bela Vista (perto do campus FIAP Paulista)",
-    "cidadao_beneficiado": "Pessoas com mobilidade reduzida e idosos que moram ou circulam na Bela Vista e precisam chegar à UBS, ao mercado e ao ponto de ônibus. Persona de exemplo: dona Maria, 72 anos (fictícia nesta entrega).",
+    "cidadao_beneficiado": "Pessoas com mobilidade reduzida e idosos que moram ou circulam na Bela Vista. Personagem: dona Maria, 72 anos, que mora na Bela Vista e quer ir sozinha à UBS e ao mercado (personagem fictícia, sem dados pessoais reais).",
     "problema": "Calçadas irregulares, ladeiras e travessias de risco fazem moradores com mobilidade reduzida desistirem de sair de casa ou correrem risco no caminho.",
     "como_funciona": "O morador pede uma rota entre dois pontos do bairro e recebe o caminho mais rápido, o mais seguro ou o mais acessível. Os trechos problemáticos são registrados pela comunidade e entram no cálculo das rotas (dados simulados nesta fase).",
     "demais_partes": "Agile: organiza a equipe e o pitch. AR-VR: simula a rota e as barreiras da calçada. Data Science: analisa as ocorrências por trecho. Database: guarda locais, trechos e ocorrências. DDD Java: API das rotas e ocorrências no Render. Dynamic Programming: calcula as rotas (Dijkstra, Floyd-Warshall) e a escolha de melhorias com orçamento (mochila).",

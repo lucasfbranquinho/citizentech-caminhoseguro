@@ -38,10 +38,10 @@ Deploy no Render (05) vale 30 pts: não deixar para o último dia.
   `index.html`, HTTP do Server-Solucao (`.pkt`), `teste3.png`, PDF, README da raiz e README do Dynamic Programming.
   Os outros integrantes/disciplinas devem usar o mesmo tema e bairro.
 - **Falta:**
-  1. Repositório criado em 05/11/2026: https://github.com/lucasfbranquinho/citizentech-caminhoseguro (**privado**; abrir
-     para o público ou dar acesso ao professor antes do prazo; o link já está na Ficha, no `.pkt` e no PDF).
+  1. Repositório criado em 05/11/2026: https://github.com/lucasfbranquinho/citizentech-caminhoseguro (**privado**, por
+     decisão do Lucas; o link já está na Ficha, no `.pkt` e no PDF).
      Se mudar a Ficha: editar `dados.json` e `index.html`, colar o HTML em Server-Solucao → Services → HTTP → index.html
      (Save → Yes), refazer o print do teste 3, salvar o `.pkt` e rodar `python gerar_pdf.py` na pasta `gerador-pdf`.
-  2. A exigência de "pessoa real" do enunciado: conversar com alguém do bairro e trocar a persona fictícia.
+  2. Decisão do Lucas: usar a personagem fictícia dona Maria (72 anos), já incluída na Ficha, no `.pkt` e no PDF.
   3. Um integrante envia `.pkt` + PDF no Teams/Portal até 19/11/2026 23h55.
 
