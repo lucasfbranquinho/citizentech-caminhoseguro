@@ -1,6 +1,6 @@
 # CaminhoSeguro — Dynamic Programming (GS CitizenTech 2026.2)
 
-**FIAP — Engenharia de Software, turma 2ESPH** | Disciplina: Dynamic Programming
+**FIAP — Engenharia de Software, turma 2ESPH, equipe 1** | Disciplina: Dynamic Programming
 
 | Nome | RM |
 |---|---|

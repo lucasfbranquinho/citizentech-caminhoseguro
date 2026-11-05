@@ -5,11 +5,11 @@ Atualizado em: 05/11/2026 (Data Science concluída)
 ## Enunciados (04/11/2026)
 - `enunciados/GS-CitizenTech-2ES-2026.pdf`: o enunciado COMPLETO, com as 7 disciplinas (já resumido nos REQUISITOS.md).
 - `enunciados/GS-lancamento-motivacional-2026.pdf`: só os slides de lançamento (inspiração, exemplos, QR "CitizenTech Studio"). Sem regras novas. Não precisa reler.
-- Falta só: critérios de nota do AR-VR (perguntar ao professor) e o número da equipe (Network).
+- Falta só: critérios de nota do AR-VR (perguntar ao professor). Número da equipe: 1 (definido pela dupla).
 
 ## Decisões da equipe (pendente)
 - [ ] Integrantes (nome + RM, ordem alfabética) e nome da equipe
-- [ ] Número da equipe (X da rede 192.168.X.0/24 em Network)
+- [x] Número da equipe: 1 (X = 1 na rede 192.168.1.0/24)
 - [ ] Problema escolhido + cidade/bairro + pessoa real entrevistada
 - [ ] Nome da CitizenTech e frase do problema
 - [ ] ODS conectados
@@ -47,4 +47,4 @@ Deploy no Render (05) vale 30 pts: não deixar para o último dia.
 
 
 ## Revisão final das matérias do Lucas (05/11/2026)
-Network, DP e Data Science revisados contra o enunciado e corrigidos (ver prompts.md). Arquivos de envio: `Downloads\ENVIAR-Network\` (.pkt + PDF), `06-dynamic-programming/entrega-dp.zip`, `03-data-science/entrega-data-science.zip`. Backups das versões anteriores em `_backup/`. Pendente: confirmar que o nº da equipe é 1 (X = 1 na rede) e fazer commit/push no GitHub.
+Network, DP e Data Science revisados contra o enunciado e corrigidos (ver prompts.md). Arquivos de envio: `Downloads\ENVIAR-Network\` (.pkt + PDF), `06-dynamic-programming/entrega-dp.zip`, `03-data-science/entrega-data-science.zip`. Backups das versões anteriores em `_backup/`. Equipe 1 confirmada pelo Lucas; commit/push feitos.

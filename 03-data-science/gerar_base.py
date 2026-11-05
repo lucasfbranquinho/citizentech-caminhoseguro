@@ -118,6 +118,8 @@ for col, frac in faltas.items():
     df[col] = df[col].astype(object)
     df.loc[idx, col] = np.nan
 
-df.to_csv("trechos_bela_vista.csv", index=False, encoding="utf-8")
+# Salva ao lado deste script (funciona mesmo rodando de outra pasta).
+from pathlib import Path
+df.to_csv(Path(__file__).with_name("trechos_bela_vista.csv"), index=False, encoding="utf-8")
 print(f"Gerado trechos_bela_vista.csv com {len(df)} linhas e {df.shape[1]} colunas")
 print(f"% inacessível: {df['inacessivel_cadeira'].mean():.1%} | ocorrências/mês médias: {df['ocorrencias_mes'].mean():.2f}")

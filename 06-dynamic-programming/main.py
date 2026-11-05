@@ -21,6 +21,13 @@ from rotas import (INFINITO, caminho_floyd, floyd_warshall, melhor_rota,
                    menor_custo_com_limite, ranking_pontos_de_apoio, rota_com_parada)
 
 ORIGEM = "Casa_Dona_Maria"  # persona fictícia: dona Maria, 72 anos
+# Locais usados nos exemplos prontos (existem no bairro.json; outro arquivo pode não ter).
+LOCAIS_DEMO = (ORIGEM, "Metro_Brigadeiro", "Escola", "Posto_de_Saude", "FIAP_Paulista",
+               "Farmacia", "Centro_Comunitario")
+
+
+def tem_locais_demo(grafo):
+    return all(local in grafo.adj for local in LOCAIS_DEMO)
 
 
 def titulo(texto):
@@ -81,9 +88,12 @@ def demo_memoizacao(grafo):
 
 def demo_orcamento(dados, grafo, orcamento):
     titulo(f"4) ORÇAMENTO ÓTIMO (mochila 0/1) com R$ {orcamento} mil")
-    melhorias = dados["melhorias"]
-    ben_tab, escolhidas = mochila_tabulacao(melhorias, orcamento)
-    ben_memo, _ = mochila_memoizacao(melhorias, orcamento)
+    melhorias = dados.get("melhorias", [])
+    # Orçamento acima do custo de TODAS as melhorias não muda a resposta; limitar evita
+    # uma tabela gigante (e memória estourada) se alguém digitar um valor enorme.
+    orcamento_util = min(orcamento, sum(m["custo"] for m in melhorias))
+    ben_tab, escolhidas = mochila_tabulacao(melhorias, orcamento_util)
+    ben_memo, _ = mochila_memoizacao(melhorias, orcamento_util)
     print(f"  Benefício máximo: {ben_tab} pessoas (tabulação) | {ben_memo} (memoização)")
     gasto = sum(m["custo"] for m in escolhidas)
     print(f"  Gasto: R$ {gasto} mil de R$ {orcamento} mil. Melhorias escolhidas:")
@@ -92,10 +102,11 @@ def demo_orcamento(dados, grafo, orcamento):
 
     novo = aplicar_melhorias(grafo, escolhidas)
     titulo("5) IMPACTO: o bairro ANTES e DEPOIS das melhorias")
-    mostrar_rota(grafo, ORIGEM, "Metro_Brigadeiro", "acessivel")
-    mostrar_rota(novo, ORIGEM, "Metro_Brigadeiro", "acessivel")
-    mostrar_rota(grafo, ORIGEM, "Escola", "acessivel")
-    mostrar_rota(novo, ORIGEM, "Escola", "acessivel")
+    if tem_locais_demo(grafo):  # rotas de exemplo só existem no bairro.json
+        mostrar_rota(grafo, ORIGEM, "Metro_Brigadeiro", "acessivel")
+        mostrar_rota(novo, ORIGEM, "Metro_Brigadeiro", "acessivel")
+        mostrar_rota(grafo, ORIGEM, "Escola", "acessivel")
+        mostrar_rota(novo, ORIGEM, "Escola", "acessivel")
     mostrar_indicadores("antes:", grafo)
     mostrar_indicadores("depois:", novo)
 
@@ -161,16 +172,27 @@ def menu(dados, grafo):
                           else f"  custo {custo} | {formatar_caminho(caminho)}")
                 else:
                     k = int(input("Máximo de trechos: "))
+                    # Com custos não negativos, a melhor rota nunca precisa de mais que (locais - 1)
+                    # trechos. Limitar k dá o mesmo resultado e evita recursão profunda demais.
+                    if k > len(grafo.locais) - 1:
+                        k = len(grafo.locais) - 1
+                        print(f"  (limite ajustado para {k} trechos: mais que isso não muda a resposta)")
                     custo = menor_custo_com_limite(grafo, origem, destino, perfil, k)
                     print("  impossível com esse limite" if custo == INFINITO else f"  custo {custo}")
             elif escolha == "3":
                 dist, _ = floyd_warshall(grafo, "acessivel")
-                for soma, local in ranking_pontos_de_apoio(dist, grafo.locais)[:3]:
+                ranking = ranking_pontos_de_apoio(dist, grafo.locais)[:3]
+                if not ranking:
+                    print("  Nenhum local alcança todos os outros por rota acessível.")
+                for soma, local in ranking:
                     print(f"  {nome_legivel(local)} (soma {soma})")
             elif escolha == "5":
                 demo_orcamento(dados, grafo, int(input("Orçamento (mil R$): ")))
             elif escolha == "6":
-                demo_eficiencia(dados, grafo)
+                if tem_locais_demo(grafo) and "melhorias" in dados and "orcamento_mil_reais" in dados:
+                    demo_eficiencia(dados, grafo)
+                else:
+                    print("  A comparação usa os locais e as melhorias do bairro.json.")
             else:
                 print("Opção inválida.")
         except ValueError as erro:
@@ -202,10 +224,17 @@ def main():
     args = parser.parse_args()
     if args.orcamento is not None and args.orcamento < 0:
         parser.error("o orçamento não pode ser negativo")
+    if args.parada and not args.rota:
+        parser.error("--parada só funciona junto com --rota ORIGEM DESTINO")
 
-    dados = carregar_dados(args.dados)
-    grafo = montar_grafo(dados)
-    print(dados["aviso"])
+    try:
+        dados = carregar_dados(args.dados)
+        grafo = montar_grafo(dados)
+    except FileNotFoundError:
+        parser.error(f"arquivo de dados não encontrado: {args.dados}")
+    except (ValueError, KeyError) as erro:  # JSON malformado, campo faltando ou valor inválido
+        parser.error(f"dados inválidos em {args.dados}: {erro}")
+    print(dados.get("aviso", "Dados carregados de " + args.dados))
 
     if args.menu:
         menu(dados, grafo)
@@ -221,8 +250,11 @@ def main():
             mostrar_rota(grafo, args.rota[0], args.rota[1], args.perfil)
     elif args.orcamento is not None:
         demo_orcamento(dados, grafo, args.orcamento)
-    else:
+    elif tem_locais_demo(grafo) and "melhorias" in dados and "orcamento_mil_reais" in dados:
         demo_completa(dados, grafo)
+    else:
+        print("Os exemplos prontos usam os locais do bairro.json. Com outro arquivo, use "
+              "--menu, --rota ORIGEM DESTINO ou --orcamento VALOR.")
 
 
 if __name__ == "__main__":
