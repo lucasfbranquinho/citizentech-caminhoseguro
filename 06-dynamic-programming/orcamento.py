@@ -14,8 +14,15 @@ Recorrência: melhor(i, c) = maior benefício usando as melhorias i..fim com c d
 """
 
 
+def validar_orcamento(orcamento):
+    """Orçamento negativo não faz sentido (e quebraria os índices da tabela)."""
+    if orcamento < 0:
+        raise ValueError("o orçamento não pode ser negativo")
+
+
 def mochila_memoizacao(melhorias, orcamento, contador=None):
     """Top-down com dicionário. Retorna (benefício, lista de melhorias escolhidas)."""
+    validar_orcamento(orcamento)
     memo = {}
     n = len(melhorias)
 
@@ -49,6 +56,7 @@ def mochila_tabulacao(melhorias, orcamento):
     tabela[i][c] = maior benefício usando só as i primeiras melhorias com orçamento c.
     Tempo e espaço: O(n * orçamento).
     """
+    validar_orcamento(orcamento)
     n = len(melhorias)
     tabela = [[0] * (orcamento + 1) for _ in range(n + 1)]
     for i in range(1, n + 1):
@@ -70,6 +78,8 @@ def mochila_tabulacao(melhorias, orcamento):
 
 def mochila_sem_memoizacao(melhorias, orcamento, contador=None):
     """Recursão pura, SEM memoização (até 2^n chamadas). Só para comparar eficiência."""
+    validar_orcamento(orcamento)
+
     def melhor(i, c):
         if contador is not None:
             contador[0] += 1

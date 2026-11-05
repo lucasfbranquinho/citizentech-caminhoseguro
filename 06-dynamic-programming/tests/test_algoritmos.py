@@ -173,6 +173,15 @@ class TestOrcamento(unittest.TestCase):
         self.assertEqual(mochila_tabulacao(self.CLASSICO, 0), (0, []))
         self.assertEqual(mochila_tabulacao(self.CLASSICO, 9), (0, []))
 
+    def test_orcamento_negativo_e_recusado(self):
+        for funcao in (mochila_tabulacao, mochila_memoizacao, mochila_sem_memoizacao):
+            with self.assertRaises(ValueError):
+                funcao(self.CLASSICO, -5)
+
+    def test_limite_de_trechos_negativo_e_recusado(self):
+        with self.assertRaises(ValueError):
+            menor_custo_com_limite(grafo_pequeno(), "A", "C", "rapida", -1)
+
     def test_forca_bruta_confere_com_dados_reais(self):
         """Testa TODOS os subconjuntos e compara com a mochila."""
         dados = carregar_dados()

@@ -44,7 +44,7 @@ python main.py --menu                           # menu interativo
 python main.py --rota Casa_Dona_Maria Posto_de_Saude --perfil segura
 python main.py --rota Casa_Dona_Maria Metro_Brigadeiro --parada Farmacia
 python main.py --orcamento 30                   # mochila com outro orçamento (mil R$)
-python -m unittest -v                           # 21 testes automáticos
+python -m unittest -v                           # 23 testes automáticos
 ```
 
 Perfis de rota: `rapida`, `segura` e `acessivel`. Os nomes dos locais estão em `dados/bairro.json`.
@@ -61,7 +61,7 @@ Perfis de rota: `rapida`, `segura` e `acessivel`. Os nomes dos locais estão em 
 | `eficiencia.py` | Medição de chamadas e tempo, com dados sintéticos maiores |
 | `main.py` | Linha de comando, menu e casos de exemplo |
 | `prompts.md` | Registro dos prompts de IA usados nesta disciplina |
-| `tests/test_algoritmos.py` | 21 testes com respostas conhecidas |
+| `tests/test_algoritmos.py` | 23 testes com respostas conhecidas |
 
 ## O grafo e os perfis de custo
 
@@ -171,7 +171,7 @@ resultados e para consultas de uma única origem.
 - **Tabulação x memoização:** a tabulação não usa recursão (sem risco de estourar a pilha) e
   preenche todas as células; a memoização só calcula os estados que a pergunta realmente alcança.
 
-## Testes (`python -m unittest -v`, 21 testes)
+## Testes (`python -m unittest -v`, 23 testes)
 
 - Dijkstra e Floyd-Warshall em grafo pequeno de resposta conhecida; um contra o outro nos dados do
   bairro, nos três perfis, e em grades sintéticas.
@@ -184,6 +184,8 @@ resultados e para consultas de uma única origem.
   que cabem no orçamento.
 - Melhorias: a rampa abre a rota acessível (38 → 22), os indicadores melhoram (85% → 90%) e o grafo
   original não é alterado.
+- Entradas inválidas: orçamento negativo e limite de trechos negativo são recusados com uma mensagem
+  clara (o menu também aceita Ctrl+C para sair).
 
 ## Limitações (o que o código não faz)
 

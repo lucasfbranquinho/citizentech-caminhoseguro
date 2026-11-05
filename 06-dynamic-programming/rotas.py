@@ -134,6 +134,8 @@ def menor_custo_com_limite(grafo, origem, destino, perfil, max_trechos,
     'contador' é uma lista [n] usada só para contar as chamadas (comparação).
     Retorna o custo (INFINITO se impossível nesse limite).
     """
+    if max_trechos < 0:
+        raise ValueError("o número máximo de trechos não pode ser negativo")
     memo = {}
 
     def f(local, k):

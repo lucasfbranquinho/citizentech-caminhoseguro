@@ -136,7 +136,11 @@ def menu(dados, grafo):
   0) Sair"""
     while True:
         print(opcoes)
-        escolha = input("Escolha: ").strip()
+        try:
+            escolha = input("Escolha: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print()
+            return  # fim da entrada ou Ctrl+C: sai do menu sem erro
         try:
             if escolha == "0":
                 return
@@ -171,6 +175,9 @@ def menu(dados, grafo):
                 print("Opção inválida.")
         except ValueError as erro:
             print(f"Entrada inválida: {erro}")
+        except (EOFError, KeyboardInterrupt):
+            print()
+            return
 
 
 def pedir_local(grafo, pergunta):
@@ -193,6 +200,8 @@ def main():
     parser.add_argument("--orcamento", type=int, help="orçamento em mil R$")
     parser.add_argument("--menu", action="store_true", help="menu interativo")
     args = parser.parse_args()
+    if args.orcamento is not None and args.orcamento < 0:
+        parser.error("o orçamento não pode ser negativo")
 
     dados = carregar_dados(args.dados)
     grafo = montar_grafo(dados)
